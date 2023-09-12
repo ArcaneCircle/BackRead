@@ -37,6 +37,9 @@ export class GameStreakManager {
     Array.from(this.gameHtmlElement.longestStreakElements).forEach((longestStreakElement) => {
       longestStreakElement.innerText = this._longestStreak.toString();
     });
+  }
+
+  public saveStreak(): void {
     this.gameStorage.save({ longestStreak: this._longestStreak });
   }
 

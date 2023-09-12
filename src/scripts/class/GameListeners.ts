@@ -95,6 +95,7 @@ export class GameListeners {
           break;
         case Scene.GameOver:
           this.gameTopBar.displayNotification("Oh no! Time's over!");
+          this.gameStreakManager.saveStreak();
           break;
       }
     });
