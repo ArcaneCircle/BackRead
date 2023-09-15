@@ -38,12 +38,12 @@ export class GameCountDownTimer {
   private isRunning = false;
 
   constructor(private gamePlayScene: GamePlayScene) {
-    this.gamePlayScene.onAnsweredCorrectly.addListener(() => this.addBonusTime(5));
-    this.gamePlayScene.onAnsweredWrongly.addListener(() => this.deductTime(1));
+    this.gamePlayScene.onAnsweredCorrectly.addListener(() => this.addBonusTime(4));
+    this.gamePlayScene.onAnsweredWrongly.addListener(() => this.deductTime(4));
   }
 
   public addBonusTime(bonus: number): void {
-    this.count += bonus;
+    this.count = Math.min(this.count + bonus, 20);
     this.onGamePlayCountDownUpdatedDispatcher.dispatch(this.count);
   }
 
