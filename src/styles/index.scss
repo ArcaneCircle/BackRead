@@ -317,7 +317,6 @@ div[data-scene="GameOver"] {
 
   div.colored {
     border-radius: 0.2em;
-    border: 2px solid black;
     line-height: 16px;
     color: white;
     background: rgba(33, 107, 175, 0.8);
@@ -326,10 +325,6 @@ div[data-scene="GameOver"] {
   }
 
   div.colored:nth-child(2n + 0) {
-    background: rgba(228, 152, 0, 0.8);
-  }
-
-  div.colored:nth-child(3n + 0) {
     background: rgba(82, 156, 79, 0.8);
   }
 
@@ -344,6 +339,13 @@ div[data-scene="GameOver"] {
 
   a:hover {
     background-color: #c16e00;
+  }
+}
+
+div[data-scene="Tutorial"],
+div[data-scene="GameOver"] {
+  div.colored:nth-child(1) {
+    border: 2px solid black;
   }
 }
 
@@ -507,4 +509,8 @@ div[data-scene="GamePlay"] .answer,
 .longest-streak {
   font-size: large;
   font-weight: bold;
+}
+
+#copyright-notice {
+    font-size: 0.9em;
 }
