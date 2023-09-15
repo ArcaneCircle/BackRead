@@ -28,7 +28,6 @@ export class GameListeners {
     this.listenToFirstInteractionToStartBackgroundMusic();
     this.listenToSceneChanges();
     this.listenToCorrectlyAnsweredQuestions();
-    this.listenToWindowLoadToSetARandomBackground();
   }
 
   private listenToBackToMenuClicks(): void {
@@ -116,12 +115,6 @@ export class GameListeners {
 
     document.addEventListener("mousedown", startSong);
     document.addEventListener("touchstart", startSong);
-  }
-
-  private listenToWindowLoadToSetARandomBackground(): void {
-    window.addEventListener("load", () => {
-      this.gameHtmlElement.setBackgroundId(Random.pickIntInclusive(1, 4));
-    });
   }
 
   private listenToCorrectlyAnsweredQuestions(): void {

@@ -11,110 +11,8 @@ $color-green: #bed678;
 $color-light-blue: #a6d9ee;
 $color-blue: #0d74b6;
 
-.background1 {
+.background {
   background: radial-gradient(circle, $color-green 0%, $color-cyan 100%);
-}
-
-.background2 {
-  background: linear-gradient(
-      -45deg,
-      rgba(0, 0, 0, 0) 25%,
-      rgba(255, 255, 255, 0.2) 25%,
-      rgba(255, 255, 255, 0.2) 50%,
-      rgba(0, 0, 0, 0) 50%,
-      rgba(0, 0, 0, 0) 75%,
-      rgba(255, 255, 255, 0.2) 75%
-    ),
-    linear-gradient(
-      45deg,
-      rgba(0, 0, 0, 0) 25%,
-      rgba(255, 255, 255, 0.2) 25%,
-      rgba(255, 255, 255, 0.2) 50%,
-      rgba(0, 0, 0, 0) 50%,
-      rgba(0, 0, 0, 0) 75%,
-      rgba(255, 255, 255, 0.2) 75%
-    ),
-    $color-light-blue;
-  background-size: 20em 20em;
-}
-
-.background3 {
-  background: repeating-linear-gradient(
-      45deg,
-      rgba(0, 0, 0, 0) 5px,
-      rgba(10, 35, 45, 0.15) 5px,
-      rgba(10, 35, 45, 0.15) 10px,
-      rgba(211, 119, 111, 0) 10px,
-      rgba(211, 119, 111, 0) 35px,
-      rgba(111, 211, 151, 0.15) 35px,
-      rgba(168, 211, 111, 0.15) 40px,
-      rgba(10, 35, 45, 0.15) 40px,
-      rgba(10, 35, 45, 0.15) 50px,
-      rgba(10, 35, 45, 0) 50px,
-      rgba(10, 35, 45, 0) 60px,
-      rgba(111, 211, 211, 0.15) 60px,
-      rgba(111, 137, 211, 0.15) 70px,
-      rgba(247, 242, 84, 0.15) 70px,
-      rgba(84, 247, 209, 0.15) 80px,
-      rgba(247, 179, 84, 0) 80px,
-      rgba(247, 179, 84, 0) 90px,
-      rgba(135, 111, 211, 0.15) 90px,
-      rgba(111, 165, 211, 0.15) 110px,
-      rgba(211, 119, 111, 0) 110px,
-      rgba(211, 119, 111, 0) 120px,
-      rgba(10, 45, 35, 0.15) 120px,
-      rgba(19, 10, 45, 0.15) 140px
-    ),
-    repeating-linear-gradient(
-      135deg,
-      rgba(0, 0, 0, 0) 5px,
-      rgba(10, 35, 45, 0.15) 5px,
-      rgba(10, 35, 45, 0.15) 10px,
-      rgba(211, 119, 111, 0) 10px,
-      rgba(211, 119, 111, 0) 35px,
-      rgba(211, 111, 185, 0.15) 35px,
-      rgba(111, 174, 211, 0.15) 40px,
-      rgba(10, 22, 45, 0.15) 40px,
-      rgba(10, 18, 45, 0.15) 50px,
-      rgba(10, 35, 45, 0) 50px,
-      rgba(10, 35, 45, 0) 60px,
-      rgba(111, 160, 211, 0.15) 60px,
-      rgba(126, 111, 211, 0.15) 70px,
-      rgba(247, 212, 84, 0.15) 70px,
-      rgba(247, 179, 84, 0.15) 80px,
-      rgba(247, 179, 84, 0) 80px,
-      rgba(247, 179, 84, 0) 90px,
-      rgba(111, 211, 197, 0.15) 90px,
-      rgba(111, 211, 179, 0.15) 110px,
-      rgba(211, 119, 111, 0) 110px,
-      rgba(211, 119, 111, 0) 140px,
-      rgba(10, 45, 32, 0.15) 140px,
-      rgba(17, 10, 45, 0.15) 160px
-    ),
-    #a6eed0;
-}
-
-//noinspection CssReplaceWithShorthandSafely
-.background4 {
-  background: linear-gradient(
-      45deg,
-      rgba(0, 0, 0, 0.1) 25%,
-      rgba(0, 0, 0, 0) 25%,
-      rgba(0, 0, 0, 0) 75%,
-      rgba(0, 0, 0, 0.1) 75%,
-      rgba(0, 0, 0, 0.0980392) 0
-    ),
-    linear-gradient(
-      45deg,
-      rgba(0, 0, 0, 0.1) 25%,
-      rgba(0, 0, 0, 0) 25%,
-      rgba(0, 0, 0, 0) 75%,
-      rgba(0, 0, 0, 0.1) 75%,
-      rgba(0, 0, 0, 0.1) 0
-    ),
-    #a6e7ee;
-  background-position: 0 0, 40px 40px;
-  background-size: 80px 80px;
 }
 
 .speaker {
@@ -376,7 +274,6 @@ div[data-scene="Menu"] {
         left: 10px;
         top: 10px;
         border-radius: 0.2em;
-        border: 2px solid black;
         line-height: 116px;
         font-size: 30px;
         font-weight: bold;
