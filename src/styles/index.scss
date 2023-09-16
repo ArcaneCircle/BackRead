@@ -121,8 +121,7 @@ a,
 button,
 .button,
 .speaker {
-  cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAolBMVEUAAABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB77zEsqgBu7RFf3QNU2QBGuwAopgAfngCH9UeF+zh/9DNs6g9k4QZf3gQ7sQCK/j6H/DxKwgAinwCV/1Z49hpQvhRp5wto5wti5QIipACK+k2R/0By8BRZ3ABRyAA/tQBDtAAbnwC9d09BAAAAFHRSTlMABTMCFn0QHgqbgGZbLiCOjHRDHCnm7AYAAACqSURBVDjL7dLJEoIwDIBhFltkdaOtUBWUHcHd938149k2d2f4r/kOmUmMB6WmbSBVVThDRXV9WqhIiv0JFUl5QAWAGBdJEeMCAIjypRVds4MuTacT47D9dh/eGsG4OEIiz0a1ACDyPuP81jIQvyDNRH6WUtZ1ynxHCWDuLjxCyCpQAt5L11tbUBhRBWBt7RJrQ+eQqVwyXRL0WFHg4+emjoM/jAnZxtQ/9AFcVA7F82ZJgQAAAABJRU5ErkJggg=="),
-    auto;
+  cursor: pointer;
 }
 
 .header {
@@ -139,6 +138,7 @@ button,
 .scene {
   height: 100%;
   margin: 0 10px;
+  justify-content: center;
 
   &.inactive {
     display: none;
@@ -150,60 +150,6 @@ button,
   display: grid !important;
   grid-template-rows: auto 1fr;
   align-items: center;
-  cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAA7VBMVEUAAABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEDe9fDC4/zX8fG11+6y0e15mbXq///u//652vSu1PKrwr6etrRzj6294v7m/P3C4Pvh9/e92vfk+va30vOw1PK12O+nvr19nrikurZ4krVvj6tshqr////0///O7v/G5P/D2/7h/Py+1/zl/vvs//q+3Pqz2ffa9fba8fG01PDC1cy9z8i6zMS0yMR8n76Do7yhvLusv7qCo7l2jbSnvbJ6lrJxiK5viaoSVG2nAAAAF3RSTlMABDIHFn8QHguae2ZbNSwgnI6MdEMcCRKrcsoAAADDSURBVDjL7dLHFoJADEBRGGXA3hUEKaJURbH33tv/f46wH7L3HF+WubuE2mMcoymgwzEbB8VpeEOg0EZyDxSabDdA0W3UzEUzFJFA2JptQFzbgiBsZtFCk2tB9vIZJc4tV3VVdd2SIsSdr9c7wSi8RxYeL4qKZRj8ZHxBcQKQVuJO8X1d1yUpxRLAyxKdT77AMEyylCaB/twZJJhyBiGUzWESmAb7TAVzHFeN0QTweBeT4LFy6RR8bsyy8MPQYdS/X+gLp8ATaP9llugAAAAASUVORK5CYII="),
-    auto;
-}
-
-@media screen and (min-width: $game-width) and (min-height: $game-height) {
-  body {
-    background-color: ghostwhite;
-  }
-
-  .container {
-    width: $game-width;
-    height: $game-height;
-    margin: auto;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-
-  .container {
-    border: 16px black solid;
-    border-top-width: 60px;
-    border-bottom-width: 60px;
-    border-radius: 36px;
-  }
-
-  /* The horizontal line on the top of the device */
-  .container:before {
-    content: "";
-    display: block;
-    width: 60px;
-    height: 5px;
-    position: absolute;
-    top: -30px;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #333;
-    border-radius: 10px;
-  }
-
-  /* The circle on the bottom of the device */
-  .container:after {
-    content: "";
-    display: block;
-    width: 35px;
-    height: 35px;
-    position: absolute;
-    left: 50%;
-    bottom: -65px;
-    transform: translate(-50%, -50%);
-    background: #333;
-    border-radius: 50%;
-  }
 }
 
 div[data-scene="Tutorial"],
@@ -245,7 +191,7 @@ div[data-scene="GameOver"] {
 div[data-scene="Tutorial"],
 div[data-scene="GameOver"] {
   div.colored:nth-child(1) {
-    border: 2px solid black;
+    border: 1px solid black;
   }
 }
 
@@ -324,7 +270,7 @@ div[data-scene="GamePlay"] {
     transform: rotateY(180deg);
     text-transform: uppercase;
     border-radius: 0.2em;
-    border: 2px solid black;
+    border: 1px solid black;
     line-height: 45px;
     font-weight: bold;
     color: white;
@@ -334,7 +280,7 @@ div[data-scene="GamePlay"] {
   .question {
     font-size: 18px;
     border-radius: 0.2em;
-    border: 2px solid black;
+    border: 1px solid black;
     line-height: 38px;
     color: white;
     background: rgba(167, 83, 113, 0.8);
@@ -348,7 +294,7 @@ div[data-scene="GamePlay"] {
     > div {
       padding: 5px;
       border-radius: 0.2em;
-      border: 2px solid black;
+      border: 1px solid black;
       color: white;
       background: rgba(113, 65, 173, 0.75);
       margin: 0 10px;
@@ -362,7 +308,6 @@ div[data-scene="GamePlay"] .answer,
   box-sizing: content-box;
   margin: 0.5em;
   padding: 0 1.5em;
-  border: 2px solid rgba(8, 19, 19, 0.8);
   border-radius: 0.2em;
   font:
     normal normal bold 1em/2em Arial,
@@ -378,7 +323,7 @@ div[data-scene="GamePlay"] .answer,
   transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
 
   &:hover {
-    border: 2px solid rgba(11, 10, 22, 0.9);
+    border: 1px solid rgba(11, 10, 22, 0.9);
     box-shadow:
       0 0 1px 1px rgba(10, 11, 14, 0.8) inset,
       0 1px 0 0 rgba(0, 0, 0, 0.3);
@@ -387,7 +332,7 @@ div[data-scene="GamePlay"] .answer,
   &:active {
     position: relative;
     top: 1px;
-    border: 2px solid rgb(3, 7, 7);
+    border: 1px solid rgb(3, 7, 7);
     color: rgb(233, 233, 233);
     background: rgb(82, 161, 154);
     box-shadow:
