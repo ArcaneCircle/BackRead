@@ -21,9 +21,13 @@ export class GameTopBar {
     private gameCountDownTimer: GameCountDownTimer,
   ) {
     this.clockIcon = this.gameHtmlElement.headerRight.innerHTML;
-    this.gameHtmlElement.speaker.addEventListener("click", () =>
-      this.toggleSound(),
-    );
+    if (localStorage.getItem("muted") === "1") {
+      this.toggleSound();
+    }
+    this.gameHtmlElement.speaker.addEventListener("click", () => {
+      this.toggleSound();
+      localStorage.setItem("muted", this.isAudioDisabled() ? "1" : "0");
+    });
     this.gameCountDownTimer.onGamePlayCountDownStarted.addListener((count) =>
       this.displayCountDown(count),
     );

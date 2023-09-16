@@ -17,6 +17,7 @@ export class GameAudio {
     audio.volume = volume;
     audio.autoplay = autoplay;
     audio.loop = loop;
+    audio.muted = this.gameTopBar.isAudioDisabled();
 
     const player = new SoundBoxPlayer(song),
       progressChecker = setInterval(() => {
