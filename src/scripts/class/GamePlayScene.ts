@@ -158,6 +158,7 @@ export class GamePlayScene {
       selectedCharIndex = Random.pickIndexFromLength(selectedWord.length),
       selectedChar = selectedWord[selectedCharIndex],
       answers = [],
+      easyAnswers = [],
       selectedCharIsAVowel = vowels.indexOf(selectedChar.toUpperCase()) >= 0,
       characters = selectedCharIsAVowel
         ? Array.from(vowels)
@@ -171,15 +172,22 @@ export class GamePlayScene {
           selectedChar +
           selectedWord.substr(selectedCharIndex + 1);
 
-      if (!this.wordExists(mutatedWord)) answers.push(selectedChar);
-    } while (answers.length < answersPerQuestion);
+      if (this.wordExists(mutatedWord)) {
+        easyAnswers.push(selectedChar);
+      } else {
+        answers.push(selectedChar);
+      }
+    } while (answers.length < answersPerQuestion && characters.length > 0);
+
+    while (answers.length < answersPerQuestion) {
+      answers.push(easyAnswers.splice(0, 1)[0]);
+    }
 
     const selectedCharIsNotInTheAnswers =
-      answers.indexOf(selectedChar.toUpperCase()) == -1;
+      answers.indexOf(selectedChar.toUpperCase()) === -1;
 
     if (selectedCharIsNotInTheAnswers) {
-      answers[Random.pickIndexFromLength(answers.length)] =
-        selectedChar.toUpperCase();
+      answers[answers.length - 1] = selectedChar.toUpperCase();
     }
 
     const sentence = `${selectedWord.substr(

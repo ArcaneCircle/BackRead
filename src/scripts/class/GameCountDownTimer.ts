@@ -3,11 +3,7 @@ import { tokens } from "typed-inject";
 import { GamePlayScene } from "./GamePlayScene";
 
 export class GameCountDownTimer {
-  public get onGamePlayCountDownTimeOver(): TypedEvent {
-    return this.onGamePlayCountDownTimeOverDispatcher.getter;
-  }
-
-  public get onGamePlayCountDownStopped(): TypedEvent<number> {
+  public get onGamePlayCountDownStopped(): TypedEvent {
     return this.onGamePlayCountDownStoppedDispatcher.getter;
   }
 
@@ -27,16 +23,13 @@ export class GameCountDownTimer {
   private onGamePlayCountDownUpdatedDispatcher =
     new TypedEventDispatcher<number>();
 
-  private onGamePlayCountDownStoppedDispatcher =
-    new TypedEventDispatcher<number>();
+  private onGamePlayCountDownStoppedDispatcher = new TypedEventDispatcher();
 
-  private onGamePlayCountDownTimeOverDispatcher = new TypedEventDispatcher();
+  private initialCount = 0;
 
-  private count = 0;
+  private deadline = 0;
 
   private intervalTimerId: NodeJS.Timeout = null;
-
-  private readonly ONE_SECOND = 1000;
 
   private isRunning = false;
 
@@ -48,35 +41,38 @@ export class GameCountDownTimer {
   }
 
   public addBonusTime(bonus: number): void {
-    this.count = Math.min(this.count + bonus, 20);
-    this.onGamePlayCountDownUpdatedDispatcher.dispatch(this.count);
+    this.deadline += bonus * 1000;
+    if (this.deadline - +new Date() > this.initialCount) {
+      this.deadline = +new Date() + this.initialCount;
+    }
   }
 
   public deductTime(deduction: number): void {
-    this.count -= deduction;
-
-    if (this.count > 0) {
-      this.onGamePlayCountDownUpdatedDispatcher.dispatch(this.count);
-    } else {
-      this.stop();
-      this.onGamePlayCountDownTimeOverDispatcher.dispatch();
-    }
+    this.deadline -= deduction * 1000;
   }
 
   public start(initialCount: number): void {
     if (this.isRunning) return;
 
-    this.count = initialCount;
+    this.initialCount = initialCount * 1000;
+    this.deadline = +new Date() + this.initialCount;
     this.intervalTimerId = setInterval(() => {
-      this.deductTime(1);
-    }, this.ONE_SECOND);
+      const count = this.deadline - +new Date();
+      if (count > 0) {
+        this.onGamePlayCountDownUpdatedDispatcher.dispatch(
+          Math.floor(count / 1000),
+        );
+      } else {
+        this.stop();
+      }
+    }, 30);
     this.isRunning = true;
-    this.onGamePlayCountDownStartedDispatcher.dispatch(this.count);
+    this.onGamePlayCountDownStartedDispatcher.dispatch(initialCount);
   }
 
   public stop(): void {
     clearInterval(this.intervalTimerId);
     this.isRunning = false;
-    this.onGamePlayCountDownStoppedDispatcher.dispatch(this.count);
+    this.onGamePlayCountDownStoppedDispatcher.dispatch();
   }
 }

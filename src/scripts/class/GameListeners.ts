@@ -32,7 +32,7 @@ export class GameListeners {
   ) {
     this.listenToBackToMenuClicks();
     this.listenToButtonsHoversAndClicks();
-    this.listenToCountDownTimerOver();
+    this.listenToCountDownStopped();
     this.listenToFirstInteractionToStartBackgroundMusic();
     this.listenToSceneChanges();
     this.listenToCorrectlyAnsweredQuestions();
@@ -106,7 +106,7 @@ export class GameListeners {
           this.gameTopBar.displayNotification("Good Luck!");
           this.gameStreakManager.currentStreak = 0;
           this.gamePlayScene.preparePhase();
-          this.gameCountDownTimer.start(10);
+          this.gameCountDownTimer.start(15);
           break;
         case Scene.GameOver:
           this.gameTopBar.displayNotification("Oh no! Time's over!");
@@ -116,8 +116,8 @@ export class GameListeners {
     });
   }
 
-  private listenToCountDownTimerOver(): void {
-    this.gameCountDownTimer.onGamePlayCountDownTimeOver.addListener(() => {
+  private listenToCountDownStopped(): void {
+    this.gameCountDownTimer.onGamePlayCountDownStopped.addListener(() => {
       this.gameSceneManager.displayScene(Scene.GameOver);
     });
   }

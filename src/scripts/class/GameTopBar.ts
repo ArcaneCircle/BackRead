@@ -37,9 +37,6 @@ export class GameTopBar {
     this.gameCountDownTimer.onGamePlayCountDownStopped.addListener(() =>
       this.displayClockIcon(),
     );
-    this.gameCountDownTimer.onGamePlayCountDownTimeOver.addListener(() =>
-      this.displayClockIcon(),
-    );
   }
 
   public changeInnerHTML(innerHTML: string): Promise<void> {
