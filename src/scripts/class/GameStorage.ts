@@ -5,12 +5,11 @@ type GameData = {
 };
 
 export class GameStorage {
-
   public save(data: GameData): void {
-      window.highscores.setScore(data.longestStreak);
+    window.highscores.setScore(data.longestStreak);
   }
 
   public load(): GameData {
-      return {longestStreak: window.highscores.getScore()};
+    return { longestStreak: window.highscores.getScore() };
   }
 }

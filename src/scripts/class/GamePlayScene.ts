@@ -30,7 +30,10 @@ export class GamePlayScene {
 
   private buttonsBlocked = false;
 
-  constructor(private gameHtmlElement: GameHtmlElement, private gameStreakManager: GameStreakManager) {
+  constructor(
+    private gameHtmlElement: GameHtmlElement,
+    private gameStreakManager: GameStreakManager,
+  ) {
     this.listenToAnswersSelected();
   }
 
@@ -98,7 +101,9 @@ export class GamePlayScene {
   }
 
   private updateOpacityOnFadeTweenTick(value: number): void {
-    this.gameHtmlElement.getScene(Scene.GamePlay).style.opacity = (value / 100).toString();
+    this.gameHtmlElement.getScene(Scene.GamePlay).style.opacity = (
+      value / 100
+    ).toString();
   }
 
   private startFadeOutTween(): void {
@@ -154,23 +159,33 @@ export class GamePlayScene {
       selectedChar = selectedWord[selectedCharIndex],
       answers = [],
       selectedCharIsAVowel = vowels.indexOf(selectedChar.toUpperCase()) >= 0,
-      characters = selectedCharIsAVowel ? Array.from(vowels) : Array.from(consonants);
+      characters = selectedCharIsAVowel
+        ? Array.from(vowels)
+        : Array.from(consonants);
 
     do {
       const randomCharIndex = Random.pickIndexFromLength(characters.length),
         selectedChar = characters.splice(randomCharIndex, 1)[0],
-        mutatedWord = selectedWord.substr(0, selectedCharIndex) + selectedChar + selectedWord.substr(selectedCharIndex + 1);
+        mutatedWord =
+          selectedWord.substr(0, selectedCharIndex) +
+          selectedChar +
+          selectedWord.substr(selectedCharIndex + 1);
 
       if (!this.wordExists(mutatedWord)) answers.push(selectedChar);
     } while (answers.length < answersPerQuestion);
 
-    const selectedCharIsNotInTheAnswers = answers.indexOf(selectedChar.toUpperCase()) == -1;
+    const selectedCharIsNotInTheAnswers =
+      answers.indexOf(selectedChar.toUpperCase()) == -1;
 
     if (selectedCharIsNotInTheAnswers) {
-      answers[Random.pickIndexFromLength(answers.length)] = selectedChar.toUpperCase();
+      answers[Random.pickIndexFromLength(answers.length)] =
+        selectedChar.toUpperCase();
     }
 
-    const sentence = `${selectedWord.substr(0, selectedCharIndex)}_${selectedWord.substr(selectedCharIndex + 1)}`;
+    const sentence = `${selectedWord.substr(
+      0,
+      selectedCharIndex,
+    )}_${selectedWord.substr(selectedCharIndex + 1)}`;
 
     this.expectedAnswer = selectedChar.toUpperCase();
     this.setSentence(sentence);
@@ -230,6 +245,10 @@ export class GamePlayScene {
   }
 
   private wordExists(word: string): boolean {
-    return similarWords.some((similarWordSet) => similarWordSet.some((similarWord) => word.toLowerCase() == similarWord.toLowerCase()));
+    return similarWords.some((similarWordSet) =>
+      similarWordSet.some(
+        (similarWord) => word.toLowerCase() == similarWord.toLowerCase(),
+      ),
+    );
   }
 }

@@ -11,7 +11,15 @@ import { GameTopBar } from "./GameTopBar";
 import { Random } from "./Random";
 
 export class GameListeners {
-  public static inject = tokens("gameHtmlElement", "gameSceneManager", "gameTopBar", "gameStreakManager", "gamePlayScene", "gameCountDownTimer", "gameAudio");
+  public static inject = tokens(
+    "gameHtmlElement",
+    "gameSceneManager",
+    "gameTopBar",
+    "gameStreakManager",
+    "gamePlayScene",
+    "gameCountDownTimer",
+    "gameAudio",
+  );
 
   constructor(
     private gameHtmlElement: GameHtmlElement,
@@ -20,7 +28,7 @@ export class GameListeners {
     private gameStreakManager: GameStreakManager,
     private gamePlayScene: GamePlayScene,
     private gameCountDownTimer: GameCountDownTimer,
-    private gameAudio: GameAudio
+    private gameAudio: GameAudio,
   ) {
     this.listenToBackToMenuClicks();
     this.listenToButtonsHoversAndClicks();
@@ -31,11 +39,13 @@ export class GameListeners {
   }
 
   private listenToBackToMenuClicks(): void {
-    Array.from(this.gameHtmlElement.backToMenuButtons).forEach((backToStartButton) => {
-      backToStartButton.addEventListener("click", () => {
-        this.gameSceneManager.displayScene(Scene.Menu);
-      });
-    });
+    Array.from(this.gameHtmlElement.backToMenuButtons).forEach(
+      (backToStartButton) => {
+        backToStartButton.addEventListener("click", () => {
+          this.gameSceneManager.displayScene(Scene.Menu);
+        });
+      },
+    );
   }
 
   private listenToButtonsHoversAndClicks(): void {
@@ -50,8 +60,14 @@ export class GameListeners {
     gainNode.gain.value = 0.1;
     gainNode.connect(audioContext.destination);
 
-    const clickSound: (i) => null | number = (i) => (i > n ? null : Math.sin(i / 8000 - Math.sin(i / 60) * Math.sin(i / 61)) * t(i, n)),
-      hoverSound: (i) => null | number = (i) => (i > n ? null : Math.sin(i / 6000 - Math.sin(i / 90) * Math.sin(i / 91)) * t(i, n));
+    const clickSound: (i) => null | number = (i) =>
+        i > n
+          ? null
+          : Math.sin(i / 8000 - Math.sin(i / 60) * Math.sin(i / 61)) * t(i, n),
+      hoverSound: (i) => null | number = (i) =>
+        i > n
+          ? null
+          : Math.sin(i / 6000 - Math.sin(i / 90) * Math.sin(i / 91)) * t(i, n);
 
     Array.from(this.gameHtmlElement.allButtons).forEach((button) => {
       button.addEventListener("click", () => {
@@ -133,7 +149,7 @@ export class GameListeners {
           "Fantastic!",
           "Phenomenal!",
           "Wonderful!",
-        ])
+        ]),
       );
     });
   }

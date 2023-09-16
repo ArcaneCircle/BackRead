@@ -21,7 +21,9 @@ export class GameSceneManager {
 
   displayScene(scene: Scene): void {
     const updateSceneOpacity = (value: number): void => {
-      this.gameHtmlElement.getScene(scene).style.opacity = (value / 100).toString();
+      this.gameHtmlElement.getScene(scene).style.opacity = (
+        value / 100
+      ).toString();
     };
 
     new Tweezer({
@@ -30,7 +32,9 @@ export class GameSceneManager {
       duration: 500,
     })
       .on("tick", (value: number): void => {
-        this.gameHtmlElement.getScene(scene).style.opacity = (value / 100).toString();
+        this.gameHtmlElement.getScene(scene).style.opacity = (
+          value / 100
+        ).toString();
       })
       .on("done", () => {
         for (const sceneKey of Object.keys(Scene)) {

@@ -6,11 +6,18 @@ import { GameSceneManager } from "./GameSceneManager";
 export class GameMenu {
   public static inject = tokens("gameSceneManager", "gameHtmlElement");
 
-  constructor(private gameSceneManager: GameSceneManager, private gameHtmlElement: GameHtmlElement) {
-    Array.from(this.gameHtmlElement.mainMenu.children).forEach((menuOption: HTMLDivElement) => {
-      menuOption.addEventListener("click", () => {
-        this.gameSceneManager.displayScene(menuOption.dataset.option as Scene);
-      });
-    });
+  constructor(
+    private gameSceneManager: GameSceneManager,
+    private gameHtmlElement: GameHtmlElement,
+  ) {
+    Array.from(this.gameHtmlElement.mainMenu.children).forEach(
+      (menuOption: HTMLDivElement) => {
+        menuOption.addEventListener("click", () => {
+          this.gameSceneManager.displayScene(
+            menuOption.dataset.option as Scene,
+          );
+        });
+      },
+    );
   }
 }

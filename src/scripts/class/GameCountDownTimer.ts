@@ -21,11 +21,14 @@ export class GameCountDownTimer {
 
   public static inject = tokens("gamePlayScene");
 
-  private onGamePlayCountDownStartedDispatcher = new TypedEventDispatcher<number>();
+  private onGamePlayCountDownStartedDispatcher =
+    new TypedEventDispatcher<number>();
 
-  private onGamePlayCountDownUpdatedDispatcher = new TypedEventDispatcher<number>();
+  private onGamePlayCountDownUpdatedDispatcher =
+    new TypedEventDispatcher<number>();
 
-  private onGamePlayCountDownStoppedDispatcher = new TypedEventDispatcher<number>();
+  private onGamePlayCountDownStoppedDispatcher =
+    new TypedEventDispatcher<number>();
 
   private onGamePlayCountDownTimeOverDispatcher = new TypedEventDispatcher();
 
@@ -38,7 +41,9 @@ export class GameCountDownTimer {
   private isRunning = false;
 
   constructor(private gamePlayScene: GamePlayScene) {
-    this.gamePlayScene.onAnsweredCorrectly.addListener(() => this.addBonusTime(4));
+    this.gamePlayScene.onAnsweredCorrectly.addListener(() =>
+      this.addBonusTime(4),
+    );
     this.gamePlayScene.onAnsweredWrongly.addListener(() => this.deductTime(4));
   }
 

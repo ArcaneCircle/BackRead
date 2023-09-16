@@ -6,7 +6,11 @@ export class Random {
   /** @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random */
   public static pickIntInclusive(min: number, max: number): number {
     const minimalDifference = 1;
-    return Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min) + minimalDifference)) + Math.ceil(min);
+    return (
+      Math.floor(
+        Math.random() * (Math.floor(max) - Math.ceil(min) + minimalDifference),
+      ) + Math.ceil(min)
+    );
   }
 
   public static pickElementFromArray<T>(arr: Array<T>): T {
@@ -15,9 +19,9 @@ export class Random {
 
   /** @see https://stackoverflow.com/a/55699349 */
   public static pickElementFromEnum<T>(anEnum: T): T[keyof T] {
-    const enumValues = (Object.keys(anEnum)
+    const enumValues = Object.keys(anEnum)
         .map((num) => Number.parseInt(num, 10))
-        .filter((num) => !Number.isNaN(num)) as unknown) as T[keyof T][],
+        .filter((num) => !Number.isNaN(num)) as unknown as T[keyof T][],
       randomIndex = Math.floor(Math.random() * enumValues.length);
     return enumValues[randomIndex];
   }
