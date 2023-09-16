@@ -12,29 +12,27 @@
         <div class="center"></div>
         <div class="right"><i class="css-clock"></i></div>
       </div>
-      <div data-scene="Menu" class="scene inactive">
-        <div>
-          <div class="previous button">&#8249;</div>
+
+      <div id="main-menu" data-scene="Menu" class="scene inactive">
+        <div class="menu-option button" data-option="GamePlay">
+          <div>START</div>
         </div>
-        <div>
-          <div class="perspective">
-            <div class="menu-carousel">
-              <div class="menu-option button" data-option="GamePlay">
-                <div>START</div>
-              </div>
-              <div class="menu-option button" data-option="Tutorial">
-                <div>TUTORIAL</div>
-              </div>
-              <div class="menu-option button" data-option="About">
-                <div>ABOUT</div>
-              </div>
-            </div>
-          </div>
+        <div class="menu-option button" data-option="Tutorial">
+          <div>TUTORIAL</div>
         </div>
-        <div>
-          <div class="next button">&#8250;</div>
+        <div class="menu-option button" data-option="Scoreboard">
+          <div>SCOREBOARD</div>
+        </div>
+        <div class="menu-option button" data-option="About">
+          <div>ABOUT</div>
         </div>
       </div>
+
+      <div data-scene="Scoreboard" class="scene inactive">
+        <div id="scoreboard"></div>
+        <div class="back-to-menu button">&#8249; Back To Menu</div>
+      </div>
+
       <div data-scene="Tutorial" class="scene inactive">
         <div class="colored"><strong>Game Tutorial</strong></div>
         <div class="colored">
@@ -47,17 +45,19 @@
         </div>
         <div class="back-to-menu button">&#8249; Back To Menu</div>
       </div>
+
       <div data-scene="About" class="scene inactive">
         <div class="colored">
           This game was ported to WebXDC and improved by <strong>DeltaZen</strong>
         </div>
-        <div id="copyright-notice" class="colored">
+        <div class="colored">
           <p>Copyright (c) 2019 Victor Nogueira</p>
 
           <p>Permission to use, copy, modify, and/or distribute this software for any
             purpose with or without fee is hereby granted, provided that the above
-            copyright notice and this permission notice appear in all copies.<br/>
-          THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+            copyright notice and this permission notice appear in all copies.</p>
+
+          <p>THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
           REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
           AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
           INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
@@ -67,6 +67,7 @@
         </div>
         <div class="back-to-menu button">&#8249; Back To Menu</div>
       </div>
+
       <div data-scene="GamePlay" class="scene inactive">
         <div class="sentence"></div>
         <div class="question"></div>
@@ -85,6 +86,7 @@
           </div>
         </div>
       </div>
+
       <div data-scene="GameOver" class="scene inactive">
         <div class="colored"><strong>Time's Over!</strong></div>
         <div class="colored">
@@ -99,6 +101,7 @@
         <div class="back-to-menu button">&#8249; Back To Menu</div>
       </div>
     </div>
+
     <script type="module" src="./src/scripts/index.ts"></script>
   </body>
 </html>

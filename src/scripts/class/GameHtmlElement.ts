@@ -3,10 +3,6 @@ import { Scene } from "../enum/Scene";
 export class GameHtmlElement {
   public readonly menuCarousel: HTMLDivElement;
 
-  public readonly previousButton: HTMLDivElement;
-
-  public readonly nextButton: HTMLDivElement;
-
   public readonly headerCenter: HTMLDivElement;
 
   public readonly headerRight: HTMLDivElement;
@@ -28,9 +24,7 @@ export class GameHtmlElement {
   public readonly allButtons: NodeListOf<HTMLDivElement>;
 
   constructor() {
-    this.menuCarousel = document.querySelector(".menu-carousel");
-    this.previousButton = document.querySelector(".previous.button");
-    this.nextButton = document.querySelector(".next.button");
+    this.mainMenu = document.querySelector("#main-menu");
     this.headerCenter = document.querySelector(".header .center");
     this.headerRight = document.querySelector(".header .right");
     this.speaker = document.querySelector(".speaker");

@@ -220,6 +220,8 @@ div[data-scene="GameOver"] {
     background: rgba(33, 107, 175, 0.8);
     padding: 10px;
     text-align: center;
+    max-height: 60vh;
+    overflow: auto;
   }
 
   div.colored:nth-child(2n + 0) {
@@ -248,65 +250,51 @@ div[data-scene="GameOver"] {
 }
 
 div[data-scene="Menu"] {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
   margin: 0;
 
-  .perspective {
-    position: relative;
-    width: 210px;
-    height: 140px;
-    margin: 0 auto;
-    perspective: 1000px;
+  .menu-option {
+      width: 240px;
+      border-radius: 0.2em;
+      line-height: 60px;
+      font-size: 30px;
+      font-weight: bold;
+      color: white;
+      text-align: center;
 
-    .menu-carousel {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      transform-style: preserve-3d;
-      transition: transform 1s;
-
-      .menu-option {
-        position: absolute;
-        width: 190px;
-        height: 120px;
-        left: 10px;
-        top: 10px;
-        border-radius: 0.2em;
-        line-height: 116px;
-        font-size: 30px;
-        font-weight: bold;
-        color: white;
-        text-align: center;
-
-        &:hover {
+      &:hover {
           div {
-            transform: rotateY(0deg);
+              transform: rotateY(0deg);
           }
-        }
+      }
 
-        div {
+      div {
           transform: rotateY(180deg);
           transition: 0.5s;
-        }
       }
+  }
 
-      .menu-option:nth-child(1) {
-        background: rgba(82, 156, 79, 0.95);
-        transform: rotateY(0deg) translateZ(60px);
-      }
+  .menu-option:nth-child(1) {
+      background: rgba(82, 156, 79, 0.95);
+      transform: rotateY(0deg) translateZ(60px);
+  }
 
-      .menu-option:nth-child(2) {
-        background: rgba(33, 175, 154, 0.95);
-        transform: rotateY(120deg) translateZ(60px);
-      }
+  .menu-option:nth-child(2) {
+      background: rgba(33, 175, 154, 0.95);
+      transform: rotateY(0deg) translateZ(60px);
+  }
 
-      .menu-option:nth-child(3) {
-        background: rgba(228, 152, 0, 0.95);
-        transform: rotateY(240deg) translateZ(60px);
-      }
-    }
+  .menu-option:nth-child(3) {
+      background: rgba(228, 152, 0, 0.95);
+      transform: rotateY(0deg) translateZ(60px);
+  }
+
+  .menu-option:nth-child(4) {
+      background: rgba(33, 107, 175, 0.8);
+      transform: rotateY(0deg) translateZ(60px);
   }
 
   .previous,
@@ -408,6 +396,60 @@ div[data-scene="GamePlay"] .answer,
   font-weight: bold;
 }
 
-#copyright-notice {
-    font-size: 0.9em;
+/* scoreboard */
+
+div[data-scene="Scoreboard"] {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .back-to-menu {
+        position: sticky;
+        bottom: 0.5em;
+    }
+}
+
+#scoreboard {
+  max-height: 70vh;
+  max-width: 100vw;
+  overflow: auto;
+  margin-left:  -10px;
+  margin-right:  -10px;
+  padding-top: 1em;
+}
+
+.score-row {
+  display: flex;
+  font-size: 120%;
+  color: #fff;
+  text-align: left;
+  padding: 1% 2%;
+  margin: 1% 4%;
+  border-radius: 0.3em;
+}
+
+.score-row.you {
+  background: #fff;
+  color: #535353;
+}
+
+.row-pos {
+  text-align: left;
+  color: #ddd;
+}
+.you .row-pos {
+  color: #999;
+}
+
+.row-score {
+  flex-grow: 1;
+  text-align: right;
+  display: inline-block;
+}
+
+.row-name {
+  text-overflow: ellipsis;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
 }
